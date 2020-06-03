@@ -1,0 +1,56 @@
+	--All Students
+select * from Student
+
+	--All Trainers
+select * from Trainer
+
+	--All Assignments
+select * from Assignment
+
+	--All Courses
+select * from Course
+
+	--Trainers per Course
+select C.Title, C.Stream, C.Type, T.FirstName, 
+	T.LastName, T.Subject, CourseId 
+	FROM Course_Trainer TpC 
+	INNER JOIN Trainer T on T.ID = TpC.TrainerID 
+	INNER JOIN Course  C on C.ID = TpC.CourseID 
+	ORDER BY C.ID ASC;
+
+	--Students per Course
+select C.Title, C.Stream, C.Type, S.FirstName, 
+	S.LastName, StudentId, CourseId 
+	FROM Courses_Students SpC 
+	INNER JOIN Student S on S.ID = SpC.StudentID 
+	INNER JOIN Course  C on C.ID = SpC.CourseID
+	ORDER BY C.ID ASC;
+
+	--Assignments per Course
+select C.Title, C.Stream, C.Type, A.Title as Atitle,
+	A.SubDateTime, CourseId 
+	FROM AssignmentPerCoursePerStudent ApC
+	INNER JOIN Assignment A on A.ID = ApC.AssignmentID 
+	INNER JOIN Course  C on C.ID = ApC.CourseID
+	ORDER BY C.ID ASC;
+
+	--Assignments per Course per Student
+select C.Title, C.Stream, C.Type, A.Title as Atitle, 
+	A.SubDateTime, Submited, OralMark, TotalMark, 
+	S.FirstName, S.LastName, AssignmentID, CourseId, StudentID 
+	FROM AssignmentPerCoursePerStudent ApCpS 
+	INNER JOIN Assignment A on A.ID = ApCpS.AssignmentID 
+	INNER JOIN Course  C on C.ID = ApCpS.CourseID 
+	INNER JOIN Student  S on S.ID = ApCpS.StudentID 
+	ORDER BY A.ID, C.ID ASC;
+
+	--Students more than 1 Course
+select FirstName, LastName, Title, Stream, StudentID, Type 
+	FROM Courses_Students cs 
+	inner join Student S on cs.StudentID = s.ID 
+	inner join Course C on cs.CourseID = c.ID 
+	where StudentID in 
+	(select StudentID from Courses_Students cs 
+	group by StudentID 
+	having Count(CourseID) > 1) 
+	order by StudentID ASC;

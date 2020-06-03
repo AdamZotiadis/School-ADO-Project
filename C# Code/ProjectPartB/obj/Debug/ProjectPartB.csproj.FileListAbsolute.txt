@@ -1,0 +1,6 @@
+C:\Users\adami\source\repos\ProjectPartB\ProjectPartB\bin\Debug\ProjectPartB.exe.config
+C:\Users\adami\source\repos\ProjectPartB\ProjectPartB\bin\Debug\ProjectPartB.exe
+C:\Users\adami\source\repos\ProjectPartB\ProjectPartB\bin\Debug\ProjectPartB.pdb
+C:\Users\adami\source\repos\ProjectPartB\ProjectPartB\obj\Debug\ProjectPartB.csprojAssemblyReference.cache
+C:\Users\adami\source\repos\ProjectPartB\ProjectPartB\obj\Debug\ProjectPartB.exe
+C:\Users\adami\source\repos\ProjectPartB\ProjectPartB\obj\Debug\ProjectPartB.pdb
